@@ -1,0 +1,366 @@
+{%block header%}
+<style>
+   body {
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+      background: url('https://www.alfabetajuega.com/abj_public_files/multimedia/imagenes/201702/179469.alfabetajuega-pokemon-fondos-de-pantalla-14-030217.jpg') no-repeat center / cover;
+      position: relative;
+      color: #232323;
+      font-family: 'Open Sans', sans-serif;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .form-search{
+        margin: 0 auto;
+        text-align: center;
+
+        font: bold 13px sans-serif;
+        
+        position: relative;
+    }
+
+    .form-search input{
+        width: 60%;
+        box-sizing: border-box;
+        border-bottom-left-radius: 2px;
+        border-top-left-radius: 2px;
+        background-color:  #ffffff;
+        box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+        padding: 14px 15px 14px 40px;
+        border: 1px solid #b6c3cd;;
+        border-right: 0;
+        color:#4E565C;
+        outline: none;
+        -webkit-appearance: none;
+    }
+
+    .form-search button{
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        background-color:  #6caee0;
+        box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+        color: #ffffff;
+        padding: 15px 22px;
+        margin-left: -4px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    #submit1{
+      border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        background-color:  #6caee0;
+        box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+        color: #ffffff;
+        padding: 15px 22px;
+        margin-left: -4px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    .form-search i{
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 16px;
+        color: #80A3BD;
+}
+</style>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+    /* --------------------CSS----------------- */
+
+    body {
+      font: 16px 'Open Sans', sans-serif;
+    }
+
+    .box {
+      background: linear-gradient(#aff3c5, #7ff38f);
+      margin: 15px auto 0;
+      border-radius: 5px;
+      width: 300px;
+    }
+
+    .box__header {
+      padding: 15px 25px;
+      position: relative;
+    }
+
+    .box__header-title {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .box__body {
+      padding: 0 25px;
+    }
+
+    .box1 {
+      background: linear-gradient(#afccf3, #3667ec);
+      margin: 15px auto 0;
+      border-radius: 5px;
+      width: 300px;
+    }
+
+    .box1__header {
+      padding: 15px 25px;
+      position: relative;
+    }
+
+    .box1__header-title {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .box1__body {
+      padding: 0 25px;
+    }
+
+    .imgB{
+      background: #fff;;
+    }
+
+    /* STATS */
+
+    .stats {
+      color: #fff;
+      position: relative;
+      padding-bottom: 25px;
+    }
+
+    .stats__amount {
+      font-size: 42px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .stats__caption {
+      font-size: 18px;
+
+    }
+
+    .stats__change {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      text-align: right;
+      color: #B1B7C8;
+    }
+
+    .stats__value {
+      font-size: 18px;
+    }
+
+    .stats__period {
+      font-size: 14px;
+    }
+
+    .stats__value--positive {
+      color: #AEDC6F;
+    }
+
+    .stats__value--negative {
+      color: #FB5055;
+    }
+
+    .stats--main .stats__amount {
+      font-size: 54px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+  <body>
+    <div >
+      <form class="form-search" method="post" >{% csrf_token %}
+        <div class="row">
+          <div class="col-sm-12 col-md-10">
+            <input type="search" id="search" name="search" placeholder="Escribe el nombre del pokemon">
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <input id="submit1" type="submit" value="Buscar" />
+          </div>
+        </div>
+    </form>
+    </div>
+    <br><br><br><br>
+    {%if notfound%}
+    <div align="center" class="row">
+      <div class="col-sm-12 col-md-12">
+        <img src="https://cdn.dribbble.com/users/1770381/screenshots/5500073/008-404page_2x.png">
+      </div>
+    </div>
+    {%endif%}
+    {%if pokemon%}
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <div class="box">
+          <div class="box__header">
+            <h1 class="box__header-title"><center>Información de pokemon</center></h1>
+          </div>
+          <div align="center" class="box__header">
+            <h1 class="box__header-title">{{pokemon.name}} No. {{pokemon.p_id}}</h1>
+          </div>
+          <div class="box__body">
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.hp}}</div>
+              <div class="stats__caption">HP</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.attack}}</div>
+              <div class="stats__caption">Ataque</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.defense}}</div>
+              <div class="stats__caption">Defensa</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.sp_attack}}</div>
+              <div class="stats__caption">Ataque especial</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.sp_defense}}</div>
+              <div class="stats__caption">Defensa especial</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.speed}}</div>
+              <div class="stats__caption">Velocidad</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.height}}</div>
+              <div class="stats__caption">Altura</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+            <div class="stats stats--main">
+              <div class="stats__amount">{{pokemon.weight}}</div>
+              <div class="stats__caption">Peso</div>
+              <div class="stats__change">
+                <div class="stats__value stats__value--positive"></div>
+                <div class="stats__period"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <div align="center" class="imgB">
+          <img src="{{image_url}}"/>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <div class="box1">
+          <div class="box__header">
+            <h1 class="box__header-title"><center>Detalles de evolución</center></h1>
+          </div>
+          {%if b_prev%}
+            <div class="box__header">
+              <h3 class="box__header-title">Evoluciones Previas</h3>
+            </div>
+            {%for name,url in prev%}
+            <div class="box__body">
+              <div class="stats stats--main">
+                <div class="stats__amount"><img src="{{url}}" width="100"/></div>
+                <div class="stats__caption">{{name}}</div>
+                <div class="stats__change">
+                  <div class="stats__value stats__value--positive"></div>
+                  <div class="stats__period"></div>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+          {%endif%}
+          
+          {%if b_variant%}
+            <div class="box__header">
+              <h3 class="box__header-title">Variantes</h3>
+            </div>
+            {%for name,url in variant%}
+            <div class="box__body">
+              <div class="stats stats--main">
+                <div class="stats__amount"><img src="{{url}}" width="100"/></div>
+                <div class="stats__caption">{{name}}</div>
+                <div class="stats__change">
+                  <div class="stats__value stats__value--positive"></div>
+                  <div class="stats__period"></div>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+          {%endif%}
+          
+          {%if b_evolve%}
+            <div class="box__header">
+              <h3 class="box__header-title">Evoluciones</h3>
+            </div>
+            {%for name,url in evolve%}
+            <div class="box__body">
+              <div class="stats stats--main">
+                <div class="stats__amount"><img src="{{url}}" width="100"/></div>
+                <div class="stats__caption">{{name}}</div>
+                <div class="stats__change">
+                  <div class="stats__value stats__value--positive"></div>
+                  <div class="stats__period"></div>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+          {%endif%}
+
+        </div>
+      </div>
+      
+    </div>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
